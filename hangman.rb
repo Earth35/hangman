@@ -74,9 +74,7 @@ class Hangman
   def choose_password
     puts "Loading dictionary..."
     dictionary = File.open(@dictionary_path, 'r')
-    valid_passwords = dictionary.select do |x|
-      x.length > 5 && x.length < 12 && x[0] !~ /[A-Z]/
-    end
+    valid_passwords = dictionary.select { |x| x.length > 5 && x.length < 12 && x[0] !~ /[A-Z]/ }
     return valid_passwords.sample.chomp
   end
   
@@ -93,9 +91,7 @@ class Hangman
   
   def check_guess (guess)
     if @password.include?(guess)
-      @password.each_with_index do |elem, index|
-        @guessing_board[index] = guess if elem == guess
-      end
+      @password.each_with_index { |elem, index| @guessing_board[index] = guess if elem == guess }
     else
       @incorrect_guesses.push(guess)
       @limit -= 1
