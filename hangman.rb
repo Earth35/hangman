@@ -73,9 +73,14 @@ class Hangman
   
   def load_game
     puts "Loading..."
-    saved_state = File.open("save_state.yaml", "r")
-    game = saved_state.read
-    YAML::load(game).game_start
+    if File.exist?(@save_directory)
+      saved_state = File.open(@save_directory, "r")
+      game = saved_state.read
+      YAML::load(game).game_start
+    else
+      puts "No saved state found. Starting new game."
+      self.game_start
+    end
   end
   
   def choose_password
