@@ -17,8 +17,9 @@ class Hangman
     while @limit > 0
       status = continue_guessing
       if status
-        puts "Congratulations, you win!"
         draw_board
+        puts "Congratulations, you win! (Application will be closed in 3 seconds)"
+        sleep(3)
         break
       else
         puts "Incorrect guesses left: #{@limit}"
@@ -118,7 +119,10 @@ class Hangman
   
   def duplicate? (guess)
     result = false
-    return true if @guessing_board.include?(guess) || @incorrect_guesses.include?(guess)
+    if @guessing_board.include?(guess) || @incorrect_guesses.include?(guess)
+      puts "You've already checked this letter!"
+      return true 
+    end
   end
   
   def save_game
