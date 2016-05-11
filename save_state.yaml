@@ -1,22 +1,29 @@
 --- !ruby/object:Hangman
 dictionary_path: 5desk.txt
-limit: 9
+limit: 8
 save_directory: save_state.yaml
 password:
-- c
-- a
-- r
-- a
-- v
+- d
 - e
+- f
+- o
+- r
+- m
+- a
+- b
 - l
+- e
 guessing_board:
 - _
+- e
+- _
+- o
+- _
+- _
 - a
-- r
-- a
 - _
 - _
-- _
+- e
 incorrect_guesses:
-- b
+- u
+- i

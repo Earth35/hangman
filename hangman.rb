@@ -13,9 +13,9 @@ class Hangman
   
   protected
   
-  def new_game
+  def game_start
     while @limit > 0
-      status = continue
+      status = continue_guessing
       if status
         puts "Congratulations, you win!"
         draw_board
@@ -33,29 +33,31 @@ class Hangman
   private
 
   def main_menu
-    puts "--==*=*=*==--".center(50, " ")
-    puts "-=*=- Hangman -=*=-".center(50, " ")
-    puts "--==*=*=*==--".center(50, " ")
+    draw_title
     puts "\n1 New Game"
     puts "2 Load Game"
+    puts "3 Exit"
     choice = get_mode
-    if choice == "1"
-      self.new_game
-    else
+    case choice
+    when "1"
+      self.game_start
+    when "2"
       load_game
+    when "3"
+      abort "See you soon!"
     end
   end
   
   def get_mode
     choice = gets.chomp
-    until choice =~ /^[12]$/
-      puts "Enter 1 to start a new game, enter 2 to load saved game state:"
+    until choice =~ /^[123]$/
+      puts "Enter 1 to start a new game, 2 to load saved game state or 3 to exit:"
       choice = gets.chomp
     end
     return choice
   end
   
-  def continue
+  def continue_guessing
     draw_board
     puts "Incorrectly guessed letters: #{@incorrect_guesses.join(", ")}"
     guess = get_input
@@ -68,7 +70,7 @@ class Hangman
     puts "Loading..."
     saved_state = File.open("save_state.yaml", "r")
     game = saved_state.read
-    YAML::load(game).new_game
+    YAML::load(game).game_start
   end
   
   def choose_password
@@ -96,6 +98,12 @@ class Hangman
       @incorrect_guesses.push(guess)
       @limit -= 1
     end
+  end
+  
+  def draw_title
+    puts "--==*=*=*==--".center(50, " ")
+    puts "-=*=- Hangman -=*=-".center(50, " ")
+    puts "--==*=*=*==--".center(50, " ")
   end
   
   def draw_board
