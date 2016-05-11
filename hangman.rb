@@ -1,6 +1,8 @@
 require 'yaml'
+require_relative './lib/gallows'
 
 class Hangman
+  include Gallows
   def initialize
     @dictionary_path = "5desk.txt"
     @limit = 10
@@ -26,6 +28,7 @@ class Hangman
       end
     end
     if @limit == 0
+      draw_gallows (0)
       puts "You lose!"
       puts "The correct word was: #{@password.join}"
     end
@@ -59,6 +62,7 @@ class Hangman
   end
   
   def continue_guessing
+    draw_gallows(@limit)
     draw_board
     puts "Incorrectly guessed letters: #{@incorrect_guesses.join(", ")}"
     guess = get_input
@@ -131,6 +135,10 @@ class Hangman
       file.write(save_state)
       abort "Game saved. See you soon..."
     end
+  end
+  
+  def draw_gallows (limit)
+    send("gallows_#{limit}") # dynamically call a method from Gallows module
   end
 end
 game = Hangman.new
