@@ -4,7 +4,7 @@ require_relative './lib/gallows'
 class Hangman
   include Gallows
   def initialize
-    @dictionary_path = "5desk.txt"
+    @dictionary_path = "./lib/5desk.txt"
     @limit = 10
     @save_directory = "save_state.yaml"
     @password = choose_password.split(//)  # array of correct letters
