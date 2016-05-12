@@ -2,7 +2,6 @@ require 'yaml'
 require_relative './lib/gallows'
 
 class Hangman
-  include Gallows
   def initialize
     @dictionary_path = "./lib/5desk.txt"
     @limit = 10
@@ -143,7 +142,7 @@ class Hangman
   end
   
   def draw_gallows (limit)
-    send("gallows_#{limit}") # dynamically call a method from Gallows module
+    Gallows.send("gallows_#{limit}") # dynamically call a method from Gallows module
   end
 end
 game = Hangman.new

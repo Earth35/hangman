@@ -1,5 +1,5 @@
 module Gallows
-  def gallows_0
+  def Gallows.gallows_0
     puts "
           ________
           |      \\|
@@ -13,7 +13,7 @@ module Gallows
     "
   end
   
-  def gallows_1
+  def Gallows.gallows_1
     puts "
           ________
           |      \\|
@@ -27,7 +27,7 @@ module Gallows
     "
   end
   
-  def gallows_2
+  def Gallows.gallows_2
     puts "
           ________
           |      \\|
@@ -41,7 +41,7 @@ module Gallows
     "
   end
   
-  def gallows_3
+  def Gallows.gallows_3
     puts "
           ________
           |      \\|
@@ -55,7 +55,7 @@ module Gallows
     "
   end
   
-  def gallows_4 
+  def Gallows.gallows_4 
     puts "
           ________
           |      \\|
@@ -69,7 +69,7 @@ module Gallows
     "
   end
   
-  def gallows_5 
+  def Gallows.gallows_5 
   puts "
           ________
                  \\|
@@ -83,7 +83,7 @@ module Gallows
     "
   end
   
-  def gallows_6 
+  def Gallows.gallows_6 
   puts "                 
                  \\|
                   |
@@ -96,7 +96,7 @@ module Gallows
     "
   end
   
-  def gallows_7
+  def Gallows.gallows_7
     puts "                 
                   |
                   |
@@ -109,7 +109,7 @@ module Gallows
     "
   end
   
-  def gallows_8
+  def Gallows.gallows_8
     puts "
                      
                     |
@@ -123,7 +123,7 @@ module Gallows
       "
   end
   
-  def gallows_9
+  def Gallows.gallows_9
     puts "
                    
                    
@@ -137,7 +137,7 @@ module Gallows
     "
   end
   
-  def gallows_10
+  def Gallows.gallows_10
     puts "
                    
                    
