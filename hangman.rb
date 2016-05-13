@@ -7,8 +7,8 @@ class Hangman
     @limit = 10
     @save_directory = "save_state.yaml"
     @password = choose_password.split(//)  # array of correct letters
-    @guessing_board = @password.map { "_" } # current board and correct guesses    
-    @incorrect_guesses = []  # prevent duplicates
+    @guessing_board = @password.map { "_" } # array representing current board, contains correct guesses and blank spaces (underscores)    
+    @incorrect_guesses = []  # to prevent duplicated guesses
     main_menu
   end
   
@@ -16,7 +16,7 @@ class Hangman
   
   def game_start
     while @limit > 0
-      status = continue_guessing
+      status = continue_guessing  # status equals true if the player guessed the password
       if status
         draw_board
         puts "Congratulations, you win! (Application will be closed in 3 seconds)"
@@ -85,6 +85,7 @@ class Hangman
   def choose_password
     puts "Loading dictionary..."
     dictionary = File.open(@dictionary_path, 'r')
+    # the password must be 6-11 characters long and mustn't be a proper noun
     valid_passwords = dictionary.select { |x| x.length > 5 && x.length < 12 && x[0] !~ /[A-Z]/ }
     return valid_passwords.sample.chomp
   end
